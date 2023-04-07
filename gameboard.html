@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Toc-Toe</title>
+    <style>
+        *{
+        padding: 0;
+        margin: 0;
+    }
+    body{
+        background: linear-gradient(to bottom, #0033cc 0%, #cc0099 100%);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       
+    }
+    h1{
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 20px;
+        color: azure;
+        padding:10px 10px ;
+        background-color: rgb(51, 49, 49);
+        border-radius: 20px;
+       width: 400px;
+       text-align: center;
+       margin: 20px;
+    
+    }
+
+    .gameboard{
+        /* border:  1px solid black; */
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+
+    }
+    .gameboardrow{
+        display: flex;
+        flex-direction: row;
+    }
+    .box{
+        /* background-color: aliceblue; */
+        width: 100px;
+        height: 100px;
+        /* text-align: center; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+        font-family: 'Courier New', Courier, monospace;
+        color: rgb(0, 255, 145);
+    }
+    .vr{
+        width: 10px;
+        height: 100px;
+        background-color: antiquewhite;
+        border-radius: 10px;
+    }
+    .hr{
+        width: 320px;
+        height: 10px;
+        background-color: antiquewhite;
+        border-radius: 10px;
+    }
+    .scoreboard{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: flex;
+    }
+
+    .score{
+        background-color: aliceblue;
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 40px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 20px;
+    }
+    .btn{
+        background-color: aliceblue;
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 40px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 20px;
+        border: none;
+        cursor: pointer;
+        width: 150px;
+
+    }
+    .bottombtns{
+        position: absolute;
+        bottom: 30px;
+    }
+    </style>
+</head>
+<body>
+    <div class="scoreboard">
+      <p class="score">Vamshi - 3</p>
+      <p class="score">Sandeep - 5</p>  
+    </div>
+
+   <h1>TURN- Sharath</h1> 
+   <div class="gameboard">
+        <div class="gameboardrow">
+            <div class="box" id="box1">1</div>
+            <div class="vr"></div>
+            <div class="box" id="box2">2</div>
+            <div class="vr"></div>
+            <div class="box" id="box3">3</div>
+        </div>
+        <div class="hr"></div>
+        <div class="gameboardrow">
+            <div class="box" id="box4">4</div>
+            <div class="vr"></div>
+            <div class="box" id="box5">5</div>
+            <div class="vr"></div>
+            <div class="box" id="box6">6</div>
+        </div>
+        <div class="hr"></div>
+        <div class="gameboardrow">
+            <div class="box" id="box7">7</div>
+            <div class="vr"></div>
+            <div class="box" id="box8">8</div>
+            <div class="vr"></div>
+            <div class="box" id="box9">9</div>
+        </div>
+    
+   </div>
+
+   <div class="bottombtns">
+    <button class="btn" id="newgame"
+    onclick="window.location.href='interface.html'">Quit</button>
+    <button class="btn" id="reset">Reset</button>
+   </div>
+   
+</body>
+</html>
