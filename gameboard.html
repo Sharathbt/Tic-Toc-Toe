@@ -1,144 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Toc-Toe</title>
-    <style>
-        *{
-        padding: 0;
+    <title>Document</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+    * {
         margin: 0;
+        padding: 0;
+        /* box-sizing: border-box; */
     }
-    body{
-        background: linear-gradient(to bottom, #0033cc 0%, #cc0099 100%);
+
+    body {
+        background: linear-gradient(to bottom left, #9900ff 33%, #3366ff 100%);
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-       
-    }
-    h1{
-        font-family: 'Ubuntu', sans-serif;
-        font-size: 20px;
-        color: azure;
-        padding:10px 10px ;
-        background-color: rgb(51, 49, 49);
-        border-radius: 20px;
-       width: 400px;
-       text-align: center;
-       margin: 20px;
-    
     }
 
-    .gameboard{
-        /* border:  1px solid black; */
+    h1 {
+        font-family: 'Varela Round', sans-serif;
+        font-size: 25px;
+        color: white;
+        margin-bottom: 20px;
+        background-color: #545454;
+        padding: 10px 20px;
+        border-radius: 40px;
         width: 350px;
+        text-align: center;
+    }
+
+    .gameboard {
+        /* border: 1px solid black; */
         display: flex;
         flex-direction: column;
-
     }
-    .gameboardrow{
+
+    .gameboardrow {
         display: flex;
         flex-direction: row;
     }
-    .box{
-        /* background-color: aliceblue; */
-        width: 100px;
-        height: 100px;
-        /* text-align: center; */
+
+    .box {
+        /* background-color: green; */
+        width: 150px;
+        height: 150px;
+        /* margin: 20px; */
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 100px;
-        font-family: 'Courier New', Courier, monospace;
-        color: rgb(0, 255, 145);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
     }
-    .vr{
-        width: 10px;
-        height: 100px;
-        background-color: antiquewhite;
+
+    .vr {
+        width: 6px;
+        height: 150px;
+        background-color: white;
         border-radius: 10px;
     }
-    .hr{
-        width: 320px;
-        height: 10px;
-        background-color: antiquewhite;
+
+    .hr {
+        height: 6px;
+        width: 462px;
+        background-color: white;
         border-radius: 10px;
     }
-    .scoreboard{
+
+    /* 150 6 150 6 150 */
+
+    .scroreboard {
         position: absolute;
         top: 20px;
         left: 20px;
         display: flex;
     }
 
-    .score{
-        background-color: aliceblue;
+    .score {
+        background-color: white;
         margin: 10px;
         padding: 10px 20px;
         border-radius: 40px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 20px;
+        font-family: 'Varela Round', sans-serif;
+        font-size: 18px;
     }
-    .btn{
-        background-color: aliceblue;
+
+    .btn {
+        background-color: white;
         margin: 10px;
         padding: 10px 20px;
         border-radius: 40px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 20px;
+        font-family: 'Varela Round', sans-serif;
+        font-size: 18px;
         border: none;
         cursor: pointer;
         width: 150px;
+    }
 
-    }
-    .bottombtns{
+    .bottombtns {
         position: absolute;
-        bottom: 30px;
+        bottom: 20px;
     }
-    </style>
-</head>
+
+
+    .gamestopped {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(237, 237, 237, 0.798);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 1;
+        display: none;
+    }
+
+    .gamestopped h2 {
+        font-family: 'Varela Round', sans-serif;
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .gamestopped button {
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 40px;
+        font-family: 'Varela Round', sans-serif;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .box:hover {
+        background-color: #b8b8b83c;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+</style>
+
 <body>
-    <div class="scoreboard">
-      <p class="score">Vamshi - 3</p>
-      <p class="score">Sandeep - 5</p>  
+    <div class="gamestopped">
+        <h2>Player X Wins</h2>
+        <div>
+            <button id="replay" onclick="window.location.href='/gameboard.html'">
+                Play Again
+            </button>
+
+            <button id="quit" onclick="window.location.href='/index.html'">
+                Quit
+            </button>
+        </div>
+    </div>
+    <div class="scroreboard">
+        <p class="score">HARSHAL - 3 </p>
+        <p class="score">VIRAJ - 0 </p>
+    </div>
+    <h1>TURN - Harshal X</h1>
+    <div class="gameboard">
+        <div class="gameboardrow">
+            <div class="box" id="box1" onclick="btnpressed('box1')"></div>
+
+            <div class="vr"></div>
+            <div class="box" id="box2" onclick="btnpressed('box2')"></div>
+            <div class="vr"></div>
+            <div class="box" id="box3" onclick="btnpressed('box3')"></div>
+        </div>
+        <div class="hr"></div>
+        <div class="gameboardrow">
+            <div class="box" id="box4" onclick="btnpressed('box4')"></div>
+            <div class="vr"></div>
+            <div class="box" id="box5" onclick="btnpressed('box5')"></div>
+            <div class="vr"></div>
+            <div class="box" id="box6" onclick="btnpressed('box6')"></div>
+        </div>
+        <div class="hr"></div>
+        <div class="gameboardrow">
+            <div class="box" id="box7" onclick="btnpressed('box7')"></div>
+            <div class="vr"></div>
+            <div class="box" id="box8" onclick="btnpressed('box8')"></div>
+            <div class="vr"></div>
+            <div class="box" id="box9" onclick="btnpressed('box9')"></div>
+        </div>
     </div>
 
-   <h1>TURN- Sharath</h1> 
-   <div class="gameboard">
-        <div class="gameboardrow">
-            <div class="box" id="box1">1</div>
-            <div class="vr"></div>
-            <div class="box" id="box2">2</div>
-            <div class="vr"></div>
-            <div class="box" id="box3">3</div>
-        </div>
-        <div class="hr"></div>
-        <div class="gameboardrow">
-            <div class="box" id="box4">4</div>
-            <div class="vr"></div>
-            <div class="box" id="box5">5</div>
-            <div class="vr"></div>
-            <div class="box" id="box6">6</div>
-        </div>
-        <div class="hr"></div>
-        <div class="gameboardrow">
-            <div class="box" id="box7">7</div>
-            <div class="vr"></div>
-            <div class="box" id="box8">8</div>
-            <div class="vr"></div>
-            <div class="box" id="box9">9</div>
-        </div>
-    
-   </div>
-
-   <div class="bottombtns">
-    <button class="btn" id="newgame"
-    onclick="window.location.href='interface.html'">Quit</button>
-    <button class="btn" id="reset">Reset</button>
-   </div>
-   
+    <div class="bottombtns">
+        <button class="btn" id="newgame" onclick="window.location.href='/index.html'">Quit</button>
+        <button class="btn" id="reset" onclick="window.location.href='/gameboard.html'">Reset</button>
+    </div>
 </body>
+
+<script>
+    let playerx = localStorage.getItem("playerx");
+    let playero = localStorage.getItem("playero");
+    let playerxscore = localStorage.getItem("playerxscore");
+    let playeroscore = localStorage.getItem("playeroscore");
+    let gamsestopped = document.querySelector(".gamestopped");
+    // console.log(playerx, playero , playerxscore , playeroscore);
+
+    const setscoreboard = () => {
+        let playerxscore = localStorage.getItem("playerxscore");
+        let playeroscore = localStorage.getItem("playeroscore");
+
+        document.querySelector(".scroreboard").innerHTML
+            =
+            `
+        <p class="score">${playerx} - ${playerxscore}</p>
+        <p class="score">${playero} - ${playeroscore}</p>
+        `
+    }
+
+    setscoreboard()
+
+    let turn = "playerx";
+
+
+    const setTurn = (turn) => {
+        if (turn == "playerx") {
+            document.querySelector("h1").innerHTML
+                = `TURN - ${playerx} &nbsp; (X)`
+        }
+        else {
+            document.querySelector("h1").innerHTML
+                = `TURN - ${playero} &nbsp; (O)`
+        }
+    }
+    setTurn('playerx')
+
+
+    const checkwin = () => {
+        let box1 = document.getElementById("box1").innerHTML;
+        let box2 = document.getElementById("box2").innerHTML;
+        let box3 = document.getElementById("box3").innerHTML;
+        let box4 = document.getElementById("box4").innerHTML;
+        let box5 = document.getElementById("box5").innerHTML;
+        let box6 = document.getElementById("box6").innerHTML;
+        let box7 = document.getElementById("box7").innerHTML;
+        let box8 = document.getElementById("box8").innerHTML;
+        let box9 = document.getElementById("box9").innerHTML;
+
+        if (
+            box1 == "X" && box2 == "X" && box3 == "X" ||
+            box4 == "X" && box5 == "X" && box6 == "X" ||
+            box7 == "X" && box8 == "X" && box9 == "X" ||
+            box1 == "X" && box4 == "X" && box7 == "X" ||
+            box2 == "X" && box5 == "X" && box8 == "X" ||
+            box3 == "X" && box6 == "X" && box9 == "X" ||
+            box1 == "X" && box5 == "X" && box9 == "X" ||
+            box3 == "X" && box5 == "X" && box7 == "X"
+        ) {
+            let playerxscore = localStorage.getItem("playerxscore");
+            playerxscore = parseInt(playerxscore) + 1;
+            localStorage.setItem("playerxscore", playerxscore);
+            setscoreboard();
+            // alert(`Player X wins`);
+            gamsestopped.style.display = "flex";
+
+            gamsestopped.innerHTML = `
+            <h2>${playerx} ( X ) Wins</h2>
+        <div>
+            <button id="replay" onclick="window.location.href='/gameboard.html'">
+                Play Again
+            </button>
+
+            <button id="quit" onclick="window.location.href='/index.html'">
+                Quit
+            </button>
+        </div>
+            `
+        }
+
+        else if (
+            box1 == "O" && box2 == "O" && box3 == "O" ||
+            box4 == "O" && box5 == "O" && box6 == "O" ||
+            box7 == "O" && box8 == "O" && box9 == "O" ||
+            box1 == "O" && box4 == "O" && box7 == "O" ||
+            box2 == "O" && box5 == "O" && box8 == "O" ||
+            box3 == "O" && box6 == "O" && box9 == "O" ||
+            box1 == "O" && box5 == "O" && box9 == "O" ||
+            box3 == "O" && box5 == "O" && box7 == "O"
+        ) {
+            let playeroscore = localStorage.getItem("playeroscore");
+            playeroscore = parseInt(playeroscore) + 1;
+            localStorage.setItem("playeroscore", playeroscore);
+            setscoreboard();
+            gamsestopped.style.display = "flex";
+
+            gamsestopped.innerHTML = `
+<h2>${playero} ( O ) Wins</h2>
+<div>
+<button id="replay" onclick="window.location.href='/gameboard.html'">
+    Play Again
+</button>
+
+<button id="quit" onclick="window.location.href='/index.html'">
+    Quit
+</button>
+</div>
+`
+        }
+
+        else if (
+            box1 != "" && box2 != "" && box3 != "" &&
+            box4 != "" && box5 != "" && box6 != "" &&
+            box7 != "" && box8 != "" && box9 != ""
+        ) {
+            gamsestopped.style.display = "flex";
+
+            gamsestopped.innerHTML = `
+<h2>Match Draw !!</h2>
+<div>
+<button id="replay" onclick="window.location.href='/gameboard.html'">
+    Play Again
+</button>
+
+<button id="quit" onclick="window.location.href='/index.html'">
+    Quit
+</button>
+</div>
+`
+        }
+
+    }
+    const showxo = (boxid) => {
+        let box = document.getElementById(boxid);
+        if (turn == "playerx" && box.innerHTML == "") {
+            box.innerHTML = "X"
+            // box.style.color = "red"
+            turn = "playero"
+            setTurn(turn)
+        }
+        else if (turn == "playero" && box.innerHTML == "") {
+            box.innerHTML = "O"
+            // box.style.color = "blue"
+            turn = "playerx"
+            setTurn(turn)
+        }
+    }
+    const btnpressed = async (boxid) => {
+        // console.log(boxid);
+        await showxo(boxid);
+        checkwin();
+    }
+
+</script>
+
 </html>
